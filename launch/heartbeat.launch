@@ -1,0 +1,16 @@
+<launch>
+    <node pkg="drone_heartbeat" type="search_heartbeat" name="search_heartbeat" respawn="false" output="screen">
+        <remap from="gps" to="mavros/global_position/global"/>
+        <remap from="object" to="search_and_report"/>
+    </node>
+    <node pkg="drone_heartbeat" type="drone_heartbeat" name="drone_heartbeat" respawn="false" output="screen">
+        <remap from="drone_state" to="mavros/state"/>
+    </node>
+    <node pkg="drone_heartbeat" type="replenishment_heartbeat" name="replenishment_heartbeat" respawn="false" output="screen">
+        <remap from="item_state" to="grasp_disc_finished"/>
+        <remap from="deliver_state" to="diliver_disc_finished"/>
+    </node>
+    <node pkg="drone_heartbeat" type="follow_path_heartbeat" name="follow_path_heartbeat" respawn="false" output="screen">
+        <remap from="path_state" to="path_follow_finished"/>
+    </node>
+</launch>

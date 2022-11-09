@@ -121,6 +121,18 @@ include_directories(
 # include
   ${catkin_INCLUDE_DIRS}
 )
+set(EXECUTABLE_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/bin)
+set(LIBRARY_OUTPUT_PATH ${CMAKE_CURRENT_SOURCE_DIR}/lib)
+
+add_executable(drone_heartbeat src/drone_heartbeat.cpp)
+add_executable(search_heartbeat src/search_heartbeat.cpp)
+add_executable(replenishment_heartbeat src/replenishment_heartbeat.cpp)
+add_executable(follow_path_heartbeat src/follow_path_heartbeat.cpp)
+
+target_link_libraries(drone_heartbeat ${catkin_LIBRARIES})
+target_link_libraries(search_heartbeat ${catkin_LIBRARIES})
+target_link_libraries(replenishment_heartbeat ${catkin_LIBRARIES})
+target_link_libraries(follow_path_heartbeat ${catkin_LIBRARIES})
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
